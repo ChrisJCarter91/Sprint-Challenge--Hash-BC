@@ -23,3 +23,30 @@ Some things to keep in mind:
 Some Strategy Suggestions:
 * Don't forget to install dependencies with `pipenv install` and run them inside `pipenv shell`
 * _Think about what will happen if your strategy is the same as the example from class.  If you start at 0 and count upward, and someone else does the same thing, but they start earlier or have a faster computer, what will happen?_
+
+API Endpoints:
+
+`/api/mine`
+POST - Submit your name and a proposed proof for validation.  If the action is unsuccessful, you will receive an error message.  If successful, it will return:
+
+{
+    'index': block.index,
+    'transactions': str(block.transactions),
+    'proof': block.proof,
+    'previous_hash': block.previous_hash,
+}
+
+Failure:
+{"message": "Proof valid but already submitted."}
+
+-or-
+
+{"message": "Invalid Proof"}
+
+
+`/api/full_chain`
+GET - Returns the full chain in JSON format
+
+
+`/api/totals/`
+GET - Returns the current total for each ID in the chain
